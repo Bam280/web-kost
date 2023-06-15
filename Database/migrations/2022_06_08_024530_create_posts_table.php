@@ -16,9 +16,17 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
+            $table->string('category_id');
+            $table->string('max_lantai');
+            $table->string('max_kamarT');
+            $table->string('max_kamarM');
+            $table->string('alamat_kost');
+            $table->string('jalur_transportasi');
+            $table->string('fasilitas_kamar');
+            $table->string('fasilitas_sekitar');
+            $table->string('maps');
+            $table->string('harga');
             $table->string('picture');
-            $table->text('excerpt');
-            $table->text('body');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });

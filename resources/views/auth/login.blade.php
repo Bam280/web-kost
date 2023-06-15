@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>AdminX - Login</title>
+    <title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -12,7 +12,37 @@
 <body>
     <div class="adminx-container d-flex justify-content-center align-items-center">
         <div class="page-login">
-            <div class="text-center">
+            <section class="aubna-blog-area section_50">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-12 text-center">
+                            <h1>Login</h1>                             
+                            <hr style="border: 0.5px solid #F86D08;">
+                        </div>
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="col-lg-12">
+                                <div class="mb-3">
+                                    <label for="exampleDropdownFormEmail1" class="form-label">Email address</label>
+                                    <input type="email" name="email" class="form-control" id="exampleDropdownFormEmail1"
+                                    placeholder="email@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="exampleDropdownFormPassword1" class="form-label">Password</label>
+                                    <input type="password" name="password" class="form-control"
+                                    id="exampleDropdownFormPassword1" placeholder="Password">
+                                </div>
+                                <div class="mb-3">
+                                    <a href="/register">belum punya akun ?</a>
+                                </div>
+                                <button type="submit" class="btn btn-sm btn-block btn-primary">Sign in</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            {{-- <div class="text-center">
                 <a class="navbar-brand mb-4 h1" href="login.html">
                     <img src="{{ asset('admin') }}/demo/img/logo.png"
                         class="navbar-brand-image d-inline-block align-top mr-2" alt="">
@@ -20,7 +50,7 @@
                 </a>
             </div>
 
-            <div class="card mb-0">
+            <div class="card mb-0"> --}}
                 {{-- <div class="card-body">
             <a class="btn btn-labeled btn-block text-left btn-sm btn-facebook" href="#">
               <span class="btn-label">
@@ -38,7 +68,9 @@
           <div class="card-seperator">
             <span>or</span>
           </div> --}}
-                <div class="card-body">
+
+
+                {{-- <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
@@ -59,11 +91,14 @@
                         </div>
                         <button type="submit" class="btn btn-sm btn-block btn-primary">Sign in</button>
                     </form>
-                </div>
+                </div> --}}
+
+
+
                 {{-- <div class="card-footer text-center">
             <a href="#"><small>Forgot your password?</small></a>
           </div> --}}
-            </div>
+            {{-- </div> --}}
         </div>
     </div>
 

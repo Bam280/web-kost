@@ -3,6 +3,7 @@
 
 @include('frontend.partials.head')
 
+
 <body>
     <!-- Page Loader Start -->
     <div id="js-preloader" class="js-preloader">
@@ -13,6 +14,7 @@
     @include('frontend.partials.navbar')
 
     @yield('content')
+    @include('frontend.blog.partials.modal')
 
     <section class="aubna-welcome-area">
         <!--Content before waves-->
@@ -43,30 +45,24 @@
                 <div class="col-lg-8">
                     <div class="row row-cols-2 row-cols-lg-2">
                         @foreach ($posts as $p)
-                            <div class="col-6">
-                                <div class="blog-item">
-                                    <div class="blog_info">
-                                        <figure class="blog-img">
-                                            <a href="#">
-                                                <img src="{{ $p->picture }}" alt="blog imag">
-                                            </a>
-                                        </figure>
-                                        <div class="blog-detail">
-                                            <h3><a href="#">{{ $p->title }}</a></h3>
-                                            <p class="text-length">{{ Str::limit($p->body, 30) }}</p>
-                                            <div class="other_info">
-                                                <div class="blog-meta">
-                                                    <figure><img src="{{ asset('aubna') }}/assets/img/blog_user_1.jpg"
-                                                            alt="bloger image"></figure>
-                                                    <h4>Admin</h4>
-                                                </div>
-                                                <label><i
-                                                        class="fa fa-calendar"></i>{{ $p->created_at->format('d-m-Y') }}</label>
-                                            </div>
-                                        </div>
-                                    </div>
+                          <div class="card btn" style="width: 18rem;" data-bs-toggle="modal" href="#exampleModalToggle">
+                            <img src="{{ asset('aubna') }}/assets/img/blog-2.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h4 class="card-title">{{ $p->title }}</h4>
+                              <div class="row">
+                                <div class="col">
+                                    <h6><i class="bi bi-cash"></i> Rp.{{ $p->harga }}</h6>
                                 </div>
+                                <div class="col">
+                                    <h6>Kamar : {{ $p->max_kamarT }}</h6>
+                                </div>
+                              </div>
+                              
+                              <p class="card-text">{{ $p->alamat_kost }}</p>
+                              {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+
                             </div>
+                          </div>
                         @endforeach
                     </div>
                 </div>

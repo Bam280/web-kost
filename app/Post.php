@@ -8,5 +8,5 @@ class Post extends Model
 {
     protected $table = 'posts';
     protected $primaryKey = 'id';
-    protected $fillable = ['title','picture' ,'body', 'published_at'];
+    protected $fillable = ['title','picture','category_id','max_lantai','max_kamarT','max_kamarM','alamat_kost','jalur_transportasi','fasilitas_kamar','fasilitas_sekitar','maps','harga','published_at'];
 }
