@@ -83,6 +83,7 @@ class PostManageController extends Controller
         
 
         $store = PostManage::create(array_merge($request->all(), [
+            'pemilik_nik' => auth()->user()->nik,
             'picture' => $filename,
             'jalur_transportasi' => $checkboxString0,
             'fasilitas_kamar' => $checkboxString1,

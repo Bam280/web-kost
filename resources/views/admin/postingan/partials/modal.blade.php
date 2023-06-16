@@ -32,9 +32,9 @@
               <label for="category_id" class="form-label">Jenis kost</label>
               <select class="form-select" id="category_id" aria-label="Default select example" name="category_id">
                 <option selected>Open this select menu</option>
-                <option value="1">Laki - laki</option>
-                <option value="2">Perempuan</option>
-                <option value="3">Campur</option>
+                <option value="Laki - laki">Laki - laki</option>
+                <option value="Perempuan">Perempuan</option>
+                <option value="Campur">Campur</option>
               </select>
             </div>
             <div class="mb-3">

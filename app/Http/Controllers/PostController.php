@@ -7,9 +7,10 @@ use App\Post;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
+        
+        $posts = Post::with('pemilik')->get();
         return view('frontend.blog.index', compact('posts'));
     }
 
