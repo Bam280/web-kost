@@ -1049,6 +1049,12 @@ span.is-active:after {
 	width: 120px;
 }
 
+.card-image{
+	width: 352px;
+	height: 553;
+	object-fit: cover;
+}
+
 .waves {
 	position: relative;
 	width: 100%;

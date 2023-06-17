@@ -8,6 +8,7 @@ use App\Http\Controllers\DaftarWargaController;
 use App\Http\Controllers\DaftarAdminController;
 use App\Http\Controllers\PostManageController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 
 
@@ -25,9 +26,6 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('frontend.index');
 })->name('beranda');
-
-
-Route::get('/blog', 'App\Http\Controllers\PostController@index')->name('blog.index');
 
 
 Auth::routes();
@@ -62,6 +60,8 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     
     Route::get('/daftaradmin', 'App\Http\Controllers\DaftarAdminController@index')->name('manage-admin.index');
     
+    Route::post('/daftarwarga/{id}/edit', 'App\Http\Controllers\DaftarWargaController@update')->name('user.update');
+    
     // Post Routes
     
     Route::get('/managepost', 'App\Http\Controllers\PostManageController@index')->name('managepost.index');
@@ -69,8 +69,12 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     Route::get('/managepost/create', 'App\Http\Controllers\PostManageController@create')->name('managepost.create');
     
     Route::post('/managepost', 'App\Http\Controllers\PostManageController@store')->name('managepost.store');
+
+    Route::post('/managepost/{id}/edit', 'App\Http\Controllers\PostManageController@update')->name('managepost.update');
     
     Route::get('/managepost/{id}', 'App\Http\Controllers\PostManageController@destroy')->name('managepost.destroy');
+
+    Route::get('/blog', 'App\Http\Controllers\PostController@index')->name('blog.index');
 });
 
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout1');

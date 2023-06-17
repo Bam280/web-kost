@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PostManage;
+use Illuminate\Support\Str;
+
 
 class PostManageController extends Controller
 {
@@ -46,6 +48,8 @@ class PostManageController extends Controller
         $checkboxTransport = $request->input('checkbox0');
         $checkboxFkos = $request->input('checkbox1');
         $checkboxFsekitar = $request->input('checkbox3');
+        $mapsInput = $request->input('maps');
+
 
         if (!is_array($checkboxTransport)) {
             $checkboxTransport = [$checkboxTransport];
@@ -66,7 +70,6 @@ class PostManageController extends Controller
         
         $checkboxString3 = implode( ',' , $checkboxFsekitar);
 
-
         // Store the data in the database
         // $checkbox->jalur_transportasi = $checkboxString0;
         // $checkbox->fasilitas_kamar = $checkboxString1;
@@ -81,11 +84,16 @@ class PostManageController extends Controller
             $filename = 'default.jpg';
         }
         
+        $mapsOlah = explode("\"", $mapsInput)[1];
+        // dd($mapsOlah);
+        if (!Str::startsWith($mapsOlah, "https://www.google.com/maps/embed?pb=")) return redirect()->back();
+
 
         $store = PostManage::create(array_merge($request->all(), [
-            'pemilik_nik' => auth()->user()->nik,
+            'maps'=>$mapsOlah,
+            'nik_user' => auth()->user()->nik,
             'picture' => $filename,
-            'jalur_transportasi' => $checkboxString0,
+            'jalurTransport' => $checkboxString0,
             'fasilitas_kamar' => $checkboxString1,
             'fasilitas_sekitar' => $checkboxString3,
         ]));
@@ -111,7 +119,8 @@ class PostManageController extends Controller
      */
     public function edit($id)
     {
-        // 
+            $posts = PostManage::find($id);
+            return view('admin.postingan.index', compact('posts'));
     }
 
     /**
@@ -123,7 +132,7 @@ class PostManageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // 
+        
     }
 
     /**

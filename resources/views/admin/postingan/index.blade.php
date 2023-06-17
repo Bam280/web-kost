@@ -56,9 +56,9 @@
                                             <span class="custom-control-indicator"></span>
                                         </label>
                                     </th>
-                                    <td>{{ $w->title }}</td>
+                                    <td>{{ $w->namaKos }}</td>
                                     <td>{{ $w->created_at->format('d-m-Y') }}</td>
-                                    <td><a href="#"
+                                    <td><a href="#ModalPosts{{ $w->id }}"
                                             class="btn btn-sm btn-primary">Edit</a></td>
                                     <td>
                                         <a href="{{ route('managepost.destroy', ['id' => $w->id]) }}"

@@ -23,10 +23,12 @@
 
     <ul class="navbar-nav d-flex justify-content-end mr-2">
       <!-- Notificatoins -->
+      <li class="nav-item">
+        <a class="btn" href="/">Main Page</a>
+      </li>
       <li class="nav-item dropdown d-flex align-items-center mr-2">
         <a class="nav-link nav-link-notifications" id="dropdownNotifications" data-toggle="dropdown" href="#">
           <i class="oi oi-bell display-inline-block align-middle"></i>
-          <span class="nav-link-notification-number">3</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-notifications" aria-labelledby="dropdownNotifications">
           <div class="notifications-header d-flex justify-content-between align-items-center">
@@ -37,7 +39,7 @@
           </div>
 
           <div class="list-group">
-            <a href="#" class="list-group-item list-group-item-action unread">
+            {{-- <a href="#" class="list-group-item list-group-item-action unread">
               <p class="mb-1">Invitation for <strong>Lunch</strong> on <strong>Jan 12th 2018</strong> by <strong>Laura</strong></p>
 
               <div class="mb-1">
@@ -61,7 +63,7 @@
             <a href="#" class="list-group-item list-group-item-action">
               <p class="mb-1">Your task <strong>Design Draft</strong> is due today.</p>
               <small>4 days ago</small>
-            </a>
+            </a> --}}
           </div>
 
           <div class="notifications-footer text-center">
@@ -72,10 +74,10 @@
       <!-- Notifications -->
       <li class="nav-item dropdown">
         <a class="nav-link avatar-with-name" id="navbarDropdownMenuLink" data-toggle="dropdown" href="#">
-          <img src="" class="d-inline-block align-top" alt="">
+          <img src="{{asset('aubna')}}/assets/img/blog_user_3.jpg" class="d-inline-block align-top" alt="">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">My Profile</a>
+          <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">My Profile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="{{route('logout1')}}">Sign out</a>
         </div>

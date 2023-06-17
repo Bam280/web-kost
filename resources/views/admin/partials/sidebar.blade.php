@@ -1,7 +1,7 @@
  <!-- Sidebar -->
  <div class="adminx-sidebar expand-hover push">
     <ul class="sidebar-nav">
-          <li class="sidebar-nav-item">
+          {{-- <li class="sidebar-nav-item">
             <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#example" aria-expanded="false" aria-controls="example">
               <span class="sidebar-nav-icon">
                 <i data-feather="pie-chart"></i>
@@ -47,7 +47,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
 
       <li class="sidebar-nav-item">
         <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navTables" aria-expanded="false" aria-controls="navTables">
@@ -58,7 +58,7 @@
             </svg>
           </span>
           <span class="sidebar-nav-name">
-            Post Artikel
+            Kos Management
           </span>
           <span class="sidebar-nav-end">
             <i data-feather="chevron-right" class="nav-collapse-icon"></i>
@@ -76,7 +76,7 @@
               </span>
             </a>
           </li>
-          <li class="sidebar-nav-item">
+          {{-- <li class="sidebar-nav-item">
             <a href="{{route('managepost.index')}}" class="sidebar-nav-link">
               <span class="sidebar-nav-abbr">
                 Pm
@@ -85,10 +85,10 @@
                 Post Management
               </span>
             </a>
-          </li>
+          </li> --}}
         </ul>
       </li>
-      <li class="sidebar-nav-item">
+      {{-- <li class="sidebar-nav-item">
         <a class="sidebar-nav-link collapsed" data-toggle="collapse" href="#navForms" aria-expanded="false" aria-controls="navForms">
           <span class="sidebar-nav-icon">
             <i data-feather="edit"></i>
@@ -153,7 +153,7 @@
             </a>
           </li>
         </ul>
-      </li>
+      </li> --}}
 
     </ul>
   </div><!-- Sidebar End -->

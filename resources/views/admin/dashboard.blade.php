@@ -9,7 +9,7 @@
   </nav>
 
   <div class="pb-3">
-      <h1>Dashboard</h1>
+      <h1>Selamat Datang Admin Kost</h1>
   </div>
 
 

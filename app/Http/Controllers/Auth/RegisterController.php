@@ -59,6 +59,7 @@ class RegisterController extends Controller
             'nik' => ['required', 'string', 'max:16'],
             'noTelp' => ['required', 'string', 'max:13'],
             'tanggalLahir' => ['required', 'date'],
+            'alamat' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
@@ -79,6 +80,7 @@ class RegisterController extends Controller
             'noTelp' => $data['noTelp'],
             'tanggalLahir' => $data['tanggalLahir'],
             'email' => $data['email'],
+            'alamat' => $data['alamat'],
             'password' => Hash::make($data['password']),
             'is_admin' =>  $data['punya_kos'],
         ]);

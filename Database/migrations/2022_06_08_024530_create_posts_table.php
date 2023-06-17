@@ -15,20 +15,21 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('pemilik_nik');
-            $table->string('title');
-            $table->string('category_id');
-            $table->string('max_lantai');
-            $table->string('max_kamarT');
-            $table->string('max_kamarM');
-            $table->string('alamat_kost');
-            $table->string('jalur_transportasi');
+            $table->string('nik_user');
+            $table->string('namaKos');
+            $table->text('desc');
+            $table->string('jenisKos')->nullable();
+            $table->string('jumLantai');
+            $table->string('jumKamar');
+            $table->string('jumKamarMandi');
+            $table->string('address');
+            $table->string('jalurTransport');
             $table->string('fasilitas_kamar');
             $table->string('fasilitas_sekitar');
-            $table->string('maps');
+            $table->text('maps');
             $table->string('harga');
             $table->string('picture');
-            $table->foreign('pemilik_nik')->references('nik')->on('users');
+            $table->foreign('nik_user')->references('nik')->on('users');
             $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
@@ -44,3 +45,4 @@ class CreatePostsTable extends Migration
         Schema::dropIfExists('posts');
     }
 }
+
