@@ -1,3 +1,5 @@
+@include('admin.partials.modalUser')
+
 <nav class="navbar navbar-expand justify-content-between fixed-top">
     <a class="navbar-brand mb-0 h1 d-none d-md-block" href="{{route('home')}}">
       <img src="{{asset('admin')}}/demo/img/logo.png" class="navbar-brand-image d-inline-block align-top mr-2" alt="">
@@ -77,7 +79,7 @@
           <img src="{{asset('aubna')}}/assets/img/blog_user_3.jpg" class="d-inline-block align-top" alt="">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">My Profile</a>
+          <a class="dropdown-item" data-bs-target="#staticBackdrop" data-bs-toggle="modal">My Profile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item text-danger" href="{{route('logout1')}}">Sign out</a>
         </div>

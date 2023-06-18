@@ -132,7 +132,28 @@ class PostManageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $post = PostManage::findOrFail($id);
+        $post->title = $request->input('title');
+        $post->desc = $request->input('desc');
+        $post->category_id = $request->input('category_id');
+        $post->max_lantai = $request->input('max_lantai');
+        $post->max_kamarT = $request->input('max_kamarT');
+        $post->max_kamarM = $request->input('max_kamarM');
+        $post->alamat_kost = $request->input('alamat_kost');
+        $post->maps = $request->input('maps');
+        $post->harga = $request->input('harga');
+
+        // Update other fields as needed
+
+        if ($request->hasFile('picture')) {
+            // Handle file upload
+            $file = $request->file('picture');
+            // Add code to store and update the file path in the database
+        }
+
+        $post->save();
+
+        return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
     }
 
     /**

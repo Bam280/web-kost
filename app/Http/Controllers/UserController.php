@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -67,9 +68,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $user = Auth::user();
+        $user = auth()->user();
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -89,13 +90,14 @@ class UserController extends Controller
         $user->email = $validatedData['email'];
 
         if (!empty($validatedData['password'])) {
-            $user->password = Hash::make($validatedData['password']);
+            $user->password = bcrypt($validatedData['password']);
         }
 
         $user->save();
 
         return redirect()->back()->with('success', 'Profile updated successfully.');
     }
+
 
     /**
      * Remove the specified resource from storage.

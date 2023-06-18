@@ -57,8 +57,8 @@
                                         {{-- <h6>Kamar : {{ $p->max_kamarT }}</h6> --}}
                                     </div>
                                 </div>
-                                
-                                <p class="card-text">{{ $p->address }}</p>
+                                <hr>
+                                <p class="card-text">{{ Str::limit($p->address, 25) }}</p>
                                 {{-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
                                 </div>
                             </div>
@@ -81,8 +81,7 @@
                                             </div>
                                             <div class="row mb-2">
                                                 {{-- <a type="button" class="btn btn-success btn-lg" href="{{ $p->maps }}">Lokasi Tempat</a> --}}
-                                                <iframe src="{{ $p->maps }}" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                                
+                                                <iframe src="{{ $p->maps }}" style="border:0;" height="200px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                             </div>
                                         </div>
                                         <div class="col">
@@ -91,9 +90,39 @@
                                                 <div class="card-body">
                                                 <h5 class="card-title">Detail Pemilik</h5>
                                                 <hr style="border: 0.5px solid #F86D08;">
-                                                <p class="card-text">Pemilik : {{ $p->pemilik->name}}</p>
-                                                <p class="card-text"><i class="bi bi-geo-alt-fill"></i> Alamat : {{ $p->pemilik->alamat }}</p>
-                                                <p class="card-text"><i class="bi bi-telephone"></i> nomor : {{ $p->pemilik->noTelp }}</p>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="card-text">Pemilik </p>
+                                                    </div>
+                                                    <div class="col-1">
+                                                            :
+                                                    </div>
+                                                    <div class="col">
+                                                           {{ $p->pemilik->name}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="card-text"><i class="bi bi-geo-alt-fill"></i> Alamat</p>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        :
+                                                    </div>
+                                                    <div class="col">
+                                                        {{ $p->pemilik->alamat }}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="card-text"><i class="bi bi-telephone"></i> nomor</p>
+                                                    </div>
+                                                    <div class="col-1">
+                                                        :
+                                                    </div>
+                                                    <div class="col">
+                                                        {{ $p->pemilik->noTelp }}
+                                                    </div>
+                                                </div>
                                                 </div>
                                             </div>
                                             </div>
@@ -102,12 +131,48 @@
                                                 <div class="card-body">
                                                 <h5 class="card-title">Detail Kost</h5>
                                                 <hr style="border: 0.5px solid #F86D08;">
-                                                <p class="card-text">Deskripsi : {{$p->desc}}</p>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="card-text text-center">Deskripsi : </p>
+                                                    </div>
+                                                    <div class="col">
+                                                        {{$p->desc}}
+                                                    </div>
+                                                </div>
                                                 <p class="card-text"></p>
-                                                <p class="card-text">Jenis kost : <span class="badge text-bg-warning">{{ $p->jenisKos }}</span></p>
-                                                <p class="card-text"><i class="bi bi-geo-alt-fill"></i> Alamat : {{ $p->address }}</p>
-                                                <p class="card-text">Fasilitas : {{ $p->fasilitas_kamar }}</p>
-                                                <p class="card-text">Dekat dengan : {{ $p->fasilitas_sekitar }}</p>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="card-text">Jenis kost :</span></p>
+                                                    </div>
+                                                    <div class="col">
+                                                        <span class="badge text-bg-warning">{{ $p->jenisKos }}
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="card-text"><i class="bi bi-geo-alt-fill"></i> Alamat : </p>
+                                                    </div>
+                                                    <div class="col">
+                                                        {{ $p->address }}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="card-text">Fasilitas : </p>
+                                                    </div>
+                                                    <div class="col">
+                                                        {{ $p->fasilitas_kamar }}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <p class="card-text" style="font-size: 14px">Dekat dengan:</p>
+                                                    </div>
+                                                    <div class="col">
+                                                        {{ $p->fasilitas_sekitar }}
+                                                    </div>
+                                                </div>
                                                 </div>
                                             </div>
                                             </div>

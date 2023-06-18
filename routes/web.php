@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DaftarWargaController;
-use App\Http\Controllers\DaftarAdminController;
+// use App\Http\Controllers\DaftarWargaController;
+// use App\Http\Controllers\DaftarAdminController;
 use App\Http\Controllers\PostManageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
@@ -39,6 +39,12 @@ Auth::routes([
     'verify' =>false,
 ]);
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/update-profile', 'App\Http\Controllers\UserController@update')->name('user.update');
+
+    Route::get('/blog', 'App\Http\Controllers\PostController@index')->name('blog.index');
+});
+
 Route::middleware(['auth', 'can:user'])->group(function () {
 
 });
@@ -48,19 +54,10 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
 
     // User Routes
     
-    Route::get('/daftarwarga', 'App\Http\Controllers\DaftarWargaController@index')->name('daftarwarga.index');
-    
-    Route::get('/daftarwarga/create', 'App\Http\Controllers\DaftarWargaController@create')->name('daftarwarga.create');
-    
-    Route::post('/daftarwarga', 'App\Http\Controllers\DaftarWargaController@store')->name('daftarwarga.store');
-    
-    Route::get('/daftarwarga/{id}', 'App\Http\Controllers\DaftarWargaController@destroy')->name('daftarwarga.destroy');
     
     // Admin Routes
     
     Route::get('/daftaradmin', 'App\Http\Controllers\DaftarAdminController@index')->name('manage-admin.index');
-    
-    Route::post('/daftarwarga/{id}/edit', 'App\Http\Controllers\DaftarWargaController@update')->name('user.update');
     
     // Post Routes
     
@@ -74,7 +71,7 @@ Route::middleware(['auth', 'can:admin'])->group(function () {
     
     Route::get('/managepost/{id}', 'App\Http\Controllers\PostManageController@destroy')->name('managepost.destroy');
 
-    Route::get('/blog', 'App\Http\Controllers\PostController@index')->name('blog.index');
+    
 });
 
 Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout1');
