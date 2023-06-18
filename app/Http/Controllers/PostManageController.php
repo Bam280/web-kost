@@ -51,7 +51,7 @@ class PostManageController extends Controller
         $checkboxFkos = $request->input('checkbox1');
         $checkboxFsekitar = $request->input('checkbox3');
         $mapsInput = $request->input('maps');
-        $harga = $request->input('harga');
+        // $harga = $request->input('harga');
 
 
         if (!is_array($checkboxTransport)) {
@@ -91,7 +91,7 @@ class PostManageController extends Controller
         $mapsOlah = explode("\"", $mapsInput)[1];
         if (!Str::startsWith($mapsOlah, "https://www.google.com/maps/embed?pb=")) return redirect()->back();
 
-        $harga = strrev(chunk_split(strrev($harga), 3, '.'));
+        // $harga = strrev(chunk_split(strrev($harga), 3, '.'));
 
         $store = PostManage::create(array_merge($request->all(), [
             'maps'=>$mapsOlah,
@@ -100,7 +100,6 @@ class PostManageController extends Controller
             'jalurTransport' => $checkboxString0,
             'fasilitas_kamar' => $checkboxString1,
             'fasilitas_sekitar' => $checkboxString3,
-            'harga' => $harga,
         ]));
         
         return redirect()->route('managepost.index')->with('success', 'Postingan berhasil ditambahkan');

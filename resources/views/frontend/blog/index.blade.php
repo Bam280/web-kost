@@ -139,6 +139,30 @@
                                                         {{$p->desc}}
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <p class="card-text text-start" style="font-size: 14px">Jumlah Lantai : </p>
+                                                    </div>
+                                                    <div class="col text-start">
+                                                        {{$p->jumLantai}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <p class="card-text text-start" style="font-size: 14px">Jumlah Kamar : </p>
+                                                    </div>
+                                                    <div class="col text-start">
+                                                        {{$p->jumKamar}}
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-4">
+                                                        <p class="card-text text-start" style="font-size: 13px">Jumlah Kamar Mandi : </p>
+                                                    </div>
+                                                    <div class="col text-start">
+                                                        {{$p->jumKamarMandi}}
+                                                    </div>
+                                                </div>
                                                 <p class="card-text"></p>
                                                 <div class="row">
                                                     <div class="col-3">
