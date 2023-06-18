@@ -177,7 +177,7 @@
                                             </div>
                                             </div>
                                             <div class="row">
-                                            <a type="button" class="btn btn-danger btn-lg" href="https://wa.me/<?php echo $p->pemilik->noTelp; ?>?text=Halo%20apakah%20untuk%20kost%20<?php echo $p->title; ?>%20masih%20ada%201%20kamar%20%3F">Hubungi</a>
+                                            <a type="button" class="btn btn-danger btn-lg" href="https://wa.me/<?php echo $p->pemilik->noTelp; ?>?text=Halo%20apakah%20untuk%20<?php echo $p->namaKos; ?>%20masih%20tersedia%3F">Hubungi</a>
                                             </div>
                                         </div>
                                         </div>

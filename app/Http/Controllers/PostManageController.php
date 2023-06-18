@@ -81,9 +81,6 @@ class PostManageController extends Controller
         // Hanlde up Photo
         
         if ($request->hasFile('picture')) {
-            $request->validate([
-            'file' => 'required|file|mimes:jpg,jpeg,png',
-        ]);
             $file = $request->file('picture');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images/blogs', $filename);
@@ -92,11 +89,9 @@ class PostManageController extends Controller
         }
         
         $mapsOlah = explode("\"", $mapsInput)[1];
-        // dd($mapsOlah);
         if (!Str::startsWith($mapsOlah, "https://www.google.com/maps/embed?pb=")) return redirect()->back();
 
         $harga = strrev(chunk_split(strrev($harga), 3, '.'));
-
 
         $store = PostManage::create(array_merge($request->all(), [
             'maps'=>$mapsOlah,
@@ -107,7 +102,8 @@ class PostManageController extends Controller
             'fasilitas_sekitar' => $checkboxString3,
             'harga' => $harga,
         ]));
-        return redirect()->route('managepost.index');
+        
+        return redirect()->route('managepost.index')->with('success', 'Postingan berhasil ditambahkan');
     }
 
     /**
@@ -178,9 +174,6 @@ class PostManageController extends Controller
         // Hanlde up Photo
         
         if ($request->hasFile('picture')) {
-            $request->validate([
-            'file' => 'required|file|mimes:jpg,jpeg,png',
-        ]);
             $file = $request->file('picture');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images/blogs', $filename);
@@ -191,7 +184,7 @@ class PostManageController extends Controller
         $mapsOlah = explode("\"", $mapsInput)[1];
         if (!Str::startsWith($mapsOlah, "https://www.google.com/maps/embed?pb=")) return redirect()->back();
 
-        $harga = strrev(chunk_split(strrev($harga), 3, '.'));
+        // $harga = strrev(chunk_split(strrev($harga), 3, '.'));
 
 
         // $store = PostManage::update(array_merge($request->all(), [
@@ -224,7 +217,7 @@ class PostManageController extends Controller
         $post->fasilitas_sekitar = $checkboxString3;
         $post->address = $request->input('alamat_kost');
         $post->maps = $mapsOlah;
-        $post->harga = $harga;
+        $post->harga = $request->input('harga');
 
 
         // // Update other fields as needed
@@ -236,7 +229,7 @@ class PostManageController extends Controller
         // }
         $post->save();
 
-        return redirect()->back()->with('success', 'Post updated successfully.');
+        return redirect()->route('managepost.index');
     }
 
     /**
