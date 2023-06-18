@@ -44,11 +44,14 @@ class PostManageController extends Controller
     public function store(Request $request)
     {
         
+        
+
         // Retrieve the checkbox data from the form
         $checkboxTransport = $request->input('checkbox0');
         $checkboxFkos = $request->input('checkbox1');
         $checkboxFsekitar = $request->input('checkbox3');
         $mapsInput = $request->input('maps');
+        $harga = $request->input('harga');
 
 
         if (!is_array($checkboxTransport)) {
@@ -76,7 +79,11 @@ class PostManageController extends Controller
         // $checkbox->fasilitas_sekitar = $checkboxString3;
 
         // Hanlde up Photo
+        
         if ($request->hasFile('picture')) {
+            $request->validate([
+            'file' => 'required|file|mimes:jpg,jpeg,png',
+        ]);
             $file = $request->file('picture');
             $filename = time() . '.' . $file->getClientOriginalExtension();
             $file->move('images/blogs', $filename);
@@ -88,6 +95,8 @@ class PostManageController extends Controller
         // dd($mapsOlah);
         if (!Str::startsWith($mapsOlah, "https://www.google.com/maps/embed?pb=")) return redirect()->back();
 
+        $harga = strrev(chunk_split(strrev($harga), 3, '.'));
+
 
         $store = PostManage::create(array_merge($request->all(), [
             'maps'=>$mapsOlah,
@@ -96,6 +105,7 @@ class PostManageController extends Controller
             'jalurTransport' => $checkboxString0,
             'fasilitas_kamar' => $checkboxString1,
             'fasilitas_sekitar' => $checkboxString3,
+            'harga' => $harga,
         ]));
         return redirect()->route('managepost.index');
     }
@@ -132,28 +142,101 @@ class PostManageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $post = PostManage::findOrFail($id);
-        $post->title = $request->input('title');
-        $post->desc = $request->input('desc');
-        $post->category_id = $request->input('category_id');
-        $post->max_lantai = $request->input('max_lantai');
-        $post->max_kamarT = $request->input('max_kamarT');
-        $post->max_kamarM = $request->input('max_kamarM');
-        $post->alamat_kost = $request->input('alamat_kost');
-        $post->maps = $request->input('maps');
-        $post->harga = $request->input('harga');
+        // $post = PostManage::findOrFail($id);
+        // Retrieve the checkbox data from the form
+        $checkboxTransport = $request->input('checkbox0');
+        $checkboxFkos = $request->input('checkbox1');
+        $checkboxFsekitar = $request->input('checkbox3');
+        $mapsInput = $request->input('maps');
+        $harga = $request->input('harga');
+
+
+        if (!is_array($checkboxTransport)) {
+            $checkboxTransport = [$checkboxTransport];
+        }
+        $checkboxString0 = implode( ',' , $checkboxTransport);
+
+        if (!is_array($checkboxFkos)) {
+            $checkboxFkos = [$checkboxFkos];
+        }
+        $checkboxString1 = implode( ',' , $checkboxFkos);
+
+        if (!is_array($checkboxFsekitar)) {
+            $checkboxFsekitar = [$checkboxFsekitar];
+        }
+
+        // Convert the checkbox data array to a comma-separated string for storage
+        
+        
+        $checkboxString3 = implode( ',' , $checkboxFsekitar);
+
+        // Store the data in the database
+        // $checkbox->jalur_transportasi = $checkboxString0;
+        // $checkbox->fasilitas_kamar = $checkboxString1;
+        // $checkbox->fasilitas_sekitar = $checkboxString3;
+
+        // Hanlde up Photo
+        
+        if ($request->hasFile('picture')) {
+            $request->validate([
+            'file' => 'required|file|mimes:jpg,jpeg,png',
+        ]);
+            $file = $request->file('picture');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('images/blogs', $filename);
+        } else {
+            $filename = 'default.jpg';
+        }
+        
+        $mapsOlah = explode("\"", $mapsInput)[1];
+        if (!Str::startsWith($mapsOlah, "https://www.google.com/maps/embed?pb=")) return redirect()->back();
+
+        $harga = strrev(chunk_split(strrev($harga), 3, '.'));
+
+
+        // $store = PostManage::update(array_merge($request->all(), [
+        //     'maps'=>$mapsOlah,
+        //     'nik_user' => auth()->user()->nik,
+        //     'picture' => $filename,
+        //     'jalurTransport' => $checkboxString0,
+        //     'fasilitas_kamar' => $checkboxString1,
+        //     'fasilitas_sekitar' => $checkboxString3,
+        //     'harga' => $harga,
+        // ])
+        // , $id    
+        // );
+        // return redirect()->route('managepost.index');
 
         // Update other fields as needed
 
-        if ($request->hasFile('picture')) {
-            // Handle file upload
-            $file = $request->file('picture');
-            // Add code to store and update the file path in the database
-        }
 
+
+        $post = PostManage::findOrFail($id);
+        $post->namaKos = $request->input('namaKos');
+        $post->desc = $request->input('desc');
+        $post->jenisKos = $request->input('jenisKos');
+        $post->jumLantai = $request->input('max_lantai');
+        $post->jumKamar = $request->input('max_kamarT');
+        $post->jumKamarMandi = $request->input('max_kamarM');
+        $post->picture = $filename;
+        $post->jalurTransport = $checkboxString0;
+        $post->fasilitas_kamar = $checkboxString1;
+        $post->fasilitas_sekitar = $checkboxString3;
+        $post->address = $request->input('alamat_kost');
+        $post->maps = $mapsOlah;
+        $post->harga = $harga;
+
+
+        // // Update other fields as needed
+
+        // if ($request->hasFile('picture')) {
+        //     // Handle file upload
+        //     $file = $request->file('picture');
+        //     // Add code to store and update the file path in the database
+        // }
         $post->save();
 
-        return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
+        return redirect()->back()->with('success', 'Post updated successfully.');
     }
 
     /**

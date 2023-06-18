@@ -74,7 +74,6 @@ class UserController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'nik' => 'required|string|max:255',
             'noTelp' => 'required|string|max:255',
             'tanggalLahir' => 'required|date',
             'alamat' => 'nullable|string|max:255',
@@ -83,7 +82,6 @@ class UserController extends Controller
         ]);
 
         $user->name = $validatedData['name'];
-        $user->nik = $validatedData['nik'];
         $user->noTelp = $validatedData['noTelp'];
         $user->tanggalLahir = $validatedData['tanggalLahir'];
         $user->alamat = $validatedData['alamat'];
@@ -93,8 +91,8 @@ class UserController extends Controller
             $user->password = bcrypt($validatedData['password']);
         }
 
+        
         $user->save();
-
         return redirect()->back()->with('success', 'Profile updated successfully.');
     }
 

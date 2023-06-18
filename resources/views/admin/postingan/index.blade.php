@@ -48,14 +48,19 @@
                             
                             @php
                                 $posts = \App\PostManage::all();
-
-                                $selectedTransport = ['Angkot', 'Transjakarta'];
-                                $checkboxFkos = ['AC', 'TV', 'Parkir Luar', 'Parkir Dalam', 'Kamar Mandi Dalam', 'Kamar Mandi Luar', 'Dapur Bersama', 'Dapur Sendiri'];
-                                $checkboxFsekitar = ['Rumah sakit', 'Tempat Ibadah', 'ATM', 'Minimarket'];
-
+                                
                             @endphp
                             @foreach ($posts as $w)
-                                
+                        
+                                @php
+                                    $selectedTransport = explode(',', $w->jalurTransport);
+                                    $checkboxFkos = explode(',', $w->fasilitas_kamar);
+                                    $checkboxFsekitar = explode(',', $w->fasilitas_sekitar);
+
+                                    $mapupdate = '<iframe src="'. $w->maps .'" style="border:0;" height="200px" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>';
+
+                                @endphp    
+
                                 <tr>
                                     <th scope="row row-cols-2">
                                         <label class="custom-control custom-checkbox m-0 p-0">
@@ -84,8 +89,8 @@
                                             @csrf
                                             
                                             <div class="mb-3">
-                                            <label for="recipient-name" class="col-form-label">Nama Kost:</label>
-                                            <input type="text" class="form-control" id="recipient-name" name="title" value="{{ $w->namaKos }}">
+                                            <label for="recipient-name" class="col-form-label" for="namaKos">Nama Kost:</label>
+                                            <input type="text" class="form-control" id="recipient-name" name="namaKos" value="{{ $w->namaKos }}">
                                             </div>
                                             <div class="mb-3">
                                             <label for="desc" class="col-form-label">Deskripsi :</label>
@@ -227,7 +232,7 @@
                                             </div>
                                             <div class="mb-3">
                                             <label for="maps" class="col-form-label">Url lokasi kost:</label>
-                                            <input type="text" class="form-control" id="maps" name="maps" value="{{ $w->maps }}">
+                                            <input type="text" class="form-control" id="maps" name="maps" value="{{ $mapupdate }}">
                                             </div>
                                             <div class="mb-3">
                                             <label for="harga" class="col-form-label">Harga:</label>
@@ -235,7 +240,7 @@
                                             </div>
                                             <div class="mb-3">
                                             <label for="formFileSm" class="form-label">Gambar Kost</label>
-                                            <input class="form-control form-control-sm" id="formFileSm" type="file" name="picture" value="{{ $w->picture }}">
+                                            <input class="form-control form-control-sm" id="formFileSm" type="file" accept="image/jpg, image/jpeg, image/png" name="picture" value="{{ $w->picture }}">
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

@@ -39,7 +39,7 @@
                                                     </div>
                                                     <div class="mb-3">
                                                         <label for="nik" class="form-label">NIK</label>
-                                                        <input id="nik" type="number"
+                                                        <input id="nik" type="number" placeholder="Disabled input" disabled
                                                             class="form-control @error('nik') is-invalid @enderror" name="nik"
                                                             value="{{ old('nik', $user->nik) }}" required autocomplete="nik" autofocus>
                 

@@ -42,14 +42,14 @@
                 <div class="col-lg-24">
                     <div class="row row-cols-4 row-cols-lg-4">
                         @foreach ($posts as $p)
-                          <div class="card btn ml-5" style="width: 18rem;" data-bs-toggle="modal" href="#exampleModalToggle{{ $p->id }}">
+                          <div class="card btn ml-5 mb-3" data-bs-toggle="modal" href="#exampleModalToggle{{ $p->id }}">
                             <img src="{{ asset('images') }}/blogs/{{ $p->picture }}" class="card-img-top " alt="...">
                             <div class="card-body">
                                 <div class="container">
-                                <h4 class="card-title">{{ $p->namaKos }}</h4>
+                                <h4 class="card-title">{{ Str::limit($p->namaKos, 45)}}</h4>
                                 <div class="row">
                                     <div class="col">
-                                        <span class="badge text-bg-success"><i class="bi bi-cash"></i> Rp.{{ $p->harga }} </span>
+                                        <span class="badge text-bg-success"><i class="bi bi-cash"></i> Rp{{ $p->harga }} </span>
                                         {{-- <h6><i class="bi bi-cash"></i> Rp.{{ $p->harga }}</h6> --}}
                                     </div>
                                     <div class="col">
