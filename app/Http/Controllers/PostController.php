@@ -17,7 +17,7 @@ class PostController extends Controller
 
         if($region) $posts = $posts->where('region', $region);
         if($jarak) $posts = $posts->where('jarakKampus', $jarak);
-        if($harga == 1) $posts = $posts->orderBy('harga', 'asc');
+        if($harga == 1) $posts = $posts->orderBy('harga', 'desc');
         
         $posts = $posts->get();
         return view('frontend.blog.index', compact('posts'));

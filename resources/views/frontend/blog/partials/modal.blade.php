@@ -6,24 +6,32 @@
             </div>
             <div class="modal-body">
                 <form action="" method="get">
-                    <select class="form-select" name="region" aria-label="Default select example">
-                        <option value="">All</option>
-                        <option value="Limo">Limo</option>
-                        <option value="PD Labu">PD Labu</option>
-                    </select>
-                    <select class="form-select" name="jarak" aria-label="Default select example">
-                        <option value="">All</option>
-                        <option value="1KM">Limo</option>
-                        <option value="2KM">PD Labu</option>
-                        <option value="3KM">PD Labu</option>
-                    </select>
+                    <div class="row">
+                        <div class="col">
+                            <label for="region" class="col-form-label">Region :</label>
+                            <select class="form-select" name="region" aria-label="Default select example">
+                                <option value="">All</option>
+                                <option value="Limo">Limo</option>
+                                <option value="PD Labu">PD Labu</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label for="jarak" class="col-form-label">Jarak Kampus :</label>
+                            <select class="form-select" name="jarak" aria-label="Default select example">
+                                <option value="">All</option>
+                                <option value="1KM">1KM</option>
+                                <option value="2KM">2KM</option>
+                                <option value="3KM">3KM</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="harga" id="flexCheckChecked" >
                         <label class="form-check-label" for="flexCheckChecked">
                           Harga
                         </label>
                       </div>
-                    <button type="submit" class="btn btn-secondary">SAMBIT</button>
+                    <button type="submit" class="btn btn-secondary">Submit</button>
                 </form>
             </div>
             <div class="modal-footer justify-content-center">

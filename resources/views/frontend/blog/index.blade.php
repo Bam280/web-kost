@@ -280,11 +280,14 @@
                                                                                     <form action="{{ route('review.store') }}" method="post">
                                                                                         @csrf
                                                                                         <input type="hidden" name="id_kos" value="{{ $p->id }}">
-                                                                                        <div class="input-group mt-2 d-flex"></div>
+                                                                                        {{-- <div class="input-group mt-2 mb-2">
                                                                                             <input type="text" name="pesan" class="form-control" placeholder="Tambah Review" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                                                                            <button class="btn btn-outline-secondary" type="submit">Tambah Review</button>
+                                                                                            <button class="btn btn-outline-secondary" type="button" id="button-addon2" type="submit">Tambah Review</button>
+                                                                                        </div> --}}
+                                                                                        <div class="input-group mt-2 d-flex"></div>
+                                                                                            <input type="text" name="pesan" class="form-control" placeholder="Tulis Review" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                                                            <button class="btn btn-outline-secondary mt-2" id="button-addon2" type="submit">Tambah Review</button>
                                                                                         </div>
-                                                                                        {{-- <a href="{{ route('review.store', $p->id) }}" class="btn btn-primary">Tambah Review</a> --}}
                                                                                     </form>
                                                                                 </div>
                                                                             </div>
