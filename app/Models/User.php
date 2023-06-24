@@ -54,4 +54,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(PostManage::class);
     }
+
+    public function review()
+    {
+        return $this->hasMany(review::class, 'nik_user', 'nik');
+    }
 }

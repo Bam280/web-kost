@@ -105,6 +105,14 @@
                                             </select>
                                             </div>
                                             <div class="mb-3">
+                                            <label for="jarakKampus" class="form-label">Jarak Kampus</label>
+                                            <select class="form-select" id="jarakKampus" aria-label="Default select example" name="jarakKampus" >
+                                                <option value="Laki - laki" {{ old('jarakKampus', $w->jarakKampus) == '1KM' ? 'selected' : '' }}>1KM</option>
+                                                <option value="Perempuan" {{ old('jarakKampus', $w->jarakKampus) == '2KM' ? 'selected' : '' }}>2KM</option>
+                                                <option value="Campur" {{ old('jarakKampus', $w->jarakKampus) == '3KM' ? 'selected' : '' }}>3KM</option>
+                                            </select>
+                                            </div>
+                                            <div class="mb-3">
                                             <label for="max_lantai" class="col-form-label">Jumlah lantai:</label>
                                             <input type="text" class="form-control" id="max_lantai" name="max_lantai" value="{{ $w->jumLantai }}">
                                             </div>

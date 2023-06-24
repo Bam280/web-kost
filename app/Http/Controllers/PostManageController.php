@@ -44,7 +44,7 @@ class PostManageController extends Controller
     public function store(Request $request)
     {
         
-        
+    
 
         // Retrieve the checkbox data from the form
         $checkboxTransport = $request->input('checkbox0');

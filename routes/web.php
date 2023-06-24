@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware(['auth', 'can:user'])->group(function () {
-
+    Route::post('/review', 'App\Http\Controllers\ReviewController@store')->name('review.store');
 });
 
 Route::middleware(['auth', 'can:admin'])->group(function () {

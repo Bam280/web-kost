@@ -9,8 +9,17 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
+        $region = $request->input('region');
+        $jarak = $request->input('jarak');
+        $harga = $request->input('harga');
+
+        $posts = Post::with('pemilik','review','review.pereview');
+
+        if($region) $posts = $posts->where('region', $region);
+        if($jarak) $posts = $posts->where('jarakKampus', $jarak);
+        if($harga == 1) $posts = $posts->orderBy('harga', 'asc');
         
-        $posts = Post::with('pemilik')->get();
+        $posts = $posts->get();
         return view('frontend.blog.index', compact('posts'));
     }
 
