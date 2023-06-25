@@ -11,13 +11,13 @@ class PostController extends Controller
     {
         $region = $request->input('region');
         $jarak = $request->input('jarak');
-        $harga = $request->input('harga');
+        $jenis = $request->input('jenis');
 
         $posts = Post::with('pemilik','review','review.pereview');
 
         if($region) $posts = $posts->where('region', $region);
         if($jarak) $posts = $posts->where('jarakKampus', $jarak);
-        if($harga == 1) $posts = $posts->orderBy('harga', 'desc');
+        if($jenis) $posts = $posts->where('jenisKos', $jenis);
         
         $posts = $posts->get();
         return view('frontend.blog.index', compact('posts'));

@@ -6,7 +6,7 @@
             </div>
             <div class="modal-body">
                 <form action="" method="get">
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col">
                             <label for="region" class="col-form-label">Region :</label>
                             <select class="form-select" name="region" aria-label="Default select example">
@@ -24,13 +24,16 @@
                                 <option value="3KM">3KM</option>
                             </select>
                         </div>
+                        <div class="col">
+                            <label for="jenis" class="col-form-label">Jenis kost :</label>
+                            <select class="form-select" name="jenis" aria-label="Default select example">
+                                <option value="">All</option>
+                                <option value="Laki - laki">Laki - laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                                <option value="Campur">Campur</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="harga" id="flexCheckChecked" >
-                        <label class="form-check-label" for="flexCheckChecked">
-                          Harga
-                        </label>
-                      </div>
                     <button type="submit" class="btn btn-secondary">Submit</button>
                 </form>
             </div>

@@ -274,32 +274,32 @@
                                                                     </div>
                                                                     @auth 
                                                                         @can('admin')
-                                                                        @else
-                                                                            <div class="row">
-                                                                                <div class="col">
-                                                                                    <form action="{{ route('review.store') }}" method="post">
-                                                                                        @csrf
-                                                                                        <input type="hidden" name="id_kos" value="{{ $p->id }}">
-                                                                                        {{-- <div class="input-group mt-2 mb-2">
-                                                                                            <input type="text" name="pesan" class="form-control" placeholder="Tambah Review" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                                                                            <button class="btn btn-outline-secondary" type="button" id="button-addon2" type="submit">Tambah Review</button>
-                                                                                        </div> --}}
-                                                                                        <div class="input-group mt-2 d-flex"></div>
-                                                                                            <input type="text" name="pesan" class="form-control" placeholder="Tulis Review" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                                                                            <button class="btn btn-outline-secondary mt-2" id="button-addon2" type="submit">Tambah Review</button>
-                                                                                        </div>
-                                                                                    </form>
-                                                                                </div>
+                                                                    @else
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <form action="{{ route('review.store') }}" method="post">
+                                                                                    @csrf
+                                                                                    <input type="hidden" name="id_kos" value="{{ $p->id }}">
+                                                                                    {{-- <div class="input-group mt-2 mb-2">
+                                                                                    <input type="text" name="pesan" class="form-control" placeholder="Tambah Review" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                                                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" type="submit">Tambah Review</button>
+                                                                                    </div> --}}
+                                                                                    <div class="input-group mt-2 d-flex">
+                                                                                        <input type="text" name="pesan" class="form-control" placeholder="Tulis Review" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                                                        <button class="btn btn-outline-secondary mt-2" id="button-addon2" type="submit">Tambah Review</button>
+                                                                                     </div>
+                                                                                </form>
                                                                             </div>
-                                                                        @endcan
-                                                                    @endauth
+                                                                        </div>
+                                                                    @endcan
+                                                                @endauth
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
-                                                            <a type="button" class="btn btn-danger btn-lg"
-                                                                href="https://wa.me/<?php echo $p->pemilik->noTelp; ?>?text=Halo%20apakah%20untuk%20<?php echo $p->namaKos; ?>%20masih%20tersedia%3F">Hubungi</a>
-                                                        </div>
+                                                    <div class="row">
+                                                        <a type="button" class="btn btn-danger btn-lg"
+                                                            href="https://wa.me/<?php echo $p->pemilik->noTelp; ?>?text=Halo%20apakah%20untuk%20<?php echo $p->namaKos; ?>%20masih%20tersedia%3F">Hubungi</a>
+                                                    </div>
                                                     </div>
                                                 </div>
                                             </div>
